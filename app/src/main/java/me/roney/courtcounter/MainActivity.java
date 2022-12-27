@@ -1,6 +1,7 @@
 package me.roney.courtcounter;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -17,38 +18,35 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mViewModel = new ViewModelProvider(this).get(ScoreViewModel.class);
-        displayForTeamA(mViewModel.scoreTeamA);
-        displayForTeamB(mViewModel.scoreTeamB);
+        mViewModel.scoreTeamA.observe(this, this::displayForTeamA);
+        mViewModel.scoreTeamB.observe(this, this::displayForTeamB);
     }
 
     public void addThreeForTeamA(View view) {
-        mViewModel.scoreTeamA += 3;
-        displayForTeamA(mViewModel.scoreTeamA);
+        mViewModel.scoreTeamA.setValue(mViewModel.scoreTeamA.getValue() + 3);
     }
 
     public void addTwoForTeamA(View view) {
-        mViewModel.scoreTeamA += 2;
-        displayForTeamA(mViewModel.scoreTeamA);
+        mViewModel.scoreTeamA.setValue(mViewModel.scoreTeamA.getValue() + 2);
     }
 
     public void addOneForTeamA(View view) {
-        mViewModel.scoreTeamA += 1;
-        displayForTeamA(mViewModel.scoreTeamA);
+        mViewModel.scoreTeamA.setValue(mViewModel.scoreTeamA.getValue() + 1);
     }
 
     public void addThreeForTeamB(View view) {
-        mViewModel.scoreTeamB += 3;
-        displayForTeamB(mViewModel.scoreTeamB);
+        mViewModel.scoreTeamB.setValue(mViewModel.scoreTeamB.getValue() + 3);
+//        displayForTeamB(mViewModel.scoreTeamB);
     }
 
     public void addTwoForTeamB(View view) {
-        mViewModel.scoreTeamB += 2;
-        displayForTeamB(mViewModel.scoreTeamB);
+        mViewModel.scoreTeamB.setValue(mViewModel.scoreTeamB.getValue() + 2);
+//        displayForTeamB(mViewModel.scoreTeamB);
     }
 
     public void addOneForTeamB(View view) {
-        mViewModel.scoreTeamB += 1;
-        displayForTeamB(mViewModel.scoreTeamB);
+        mViewModel.scoreTeamB.setValue(mViewModel.scoreTeamB.getValue() + 1);
+//        displayForTeamB(mViewModel.scoreTeamB);
     }
 
     /**
@@ -68,9 +66,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void resetScore(View view) {
-        mViewModel.scoreTeamA = 0;
-        mViewModel.scoreTeamB = 0;
-        displayForTeamA(mViewModel.scoreTeamA);
-        displayForTeamB(mViewModel.scoreTeamB);
+        mViewModel.scoreTeamA.setValue(0);
+        mViewModel.scoreTeamB.setValue(0);
     }
 }
