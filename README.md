@@ -4,4 +4,6 @@ A basketball point counter app made originally under udacity android nanodegree.
 But has been updated to use livedata and viewmodel.
 Going to add livedata soon
 
-![Screenshot](https://myoctocat.com/assets/images/base-octocat.svg)
+![Screenshot](https://github.com/RoneyThomas/CourtConter/blob/main/docs/screenshot.webp?raw=true)
+
+<img src="https://github.com/RoneyThomas/CourtConter/blob/main/docs/screenshot.webp?raw=true" alt="app screenshot" width="257.63" height="458" />
