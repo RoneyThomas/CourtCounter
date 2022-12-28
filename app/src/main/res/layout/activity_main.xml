@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -12,7 +11,10 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
 
         <LinearLayout
             android:id="@+id/activity_main"
@@ -28,16 +30,19 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <TextView
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/homeTextField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:fontFamily="sans-serif-medium"
-                    android:padding="4dp"
-                    android:text="Team A"
-                    android:textAlignment="center"
-                    android:textColor="#616161"
-                    android:textSize="14sp" />
+                    android:hint="Home"
+                    android:paddingHorizontal="24dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal" />
+
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
                     android:id="@+id/team_a_score"
@@ -49,7 +54,6 @@
                     android:padding="4dp"
                     android:text="@{String.valueOf(scoreViewModel.scoreTeamA)}"
                     android:textAlignment="center"
-                    android:textColor="#000000"
                     android:textSize="56sp" />
 
                 <Button
@@ -92,16 +96,19 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <TextView
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/guestTextField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:fontFamily="sans-serif-medium"
-                    android:padding="4dp"
-                    android:text="Team B"
-                    android:textAlignment="center"
-                    android:textColor="#616161"
-                    android:textSize="14sp" />
+                    android:hint="Guest"
+                    android:paddingHorizontal="24dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal" />
+
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
                     android:id="@+id/team_b_score"
@@ -113,7 +120,6 @@
                     android:padding="4dp"
                     android:text="@{String.valueOf(scoreViewModel.scoreTeamB)}"
                     android:textAlignment="center"
-                    android:textColor="#000000"
                     android:textSize="56sp" />
 
                 <Button
@@ -147,15 +153,29 @@
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/button6"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
             android:layout_marginBottom="32dp"
-            android:onClick="@{() -> scoreViewModel.resetScore()}"
-            android:text="RESET" />
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp"
+                android:onClick="@{() -> scoreViewModel.resetScore()}"
+                android:text="Reset" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:text="Save" />
+
+        </LinearLayout>
+
 
     </RelativeLayout>
 </layout>
